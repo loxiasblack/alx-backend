@@ -38,5 +38,5 @@ class Server:
         res = index_range(page, page_size)
         dataset = self.dataset()
         if res[0] >= len(dataset):
-            return []
+            return list([])
         return dataset[res[0]: min(res[1], len(dataset))]
