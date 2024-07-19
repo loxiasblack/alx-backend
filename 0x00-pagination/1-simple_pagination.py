@@ -35,8 +35,5 @@ class Server:
         """implement get_page function"""
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
-        res = index_range(page, page_size)
-        dataset = self.dataset()
-        if res[0] >= len(dataset):
-            return list([])
-        return dataset[res[0]: min(res[1], len(dataset))]
+        startdataset, endataset = index_range(page, page_size)
+        return self.dataset()[startdataset: endataset]
