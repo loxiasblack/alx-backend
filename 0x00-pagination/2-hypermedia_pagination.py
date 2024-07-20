@@ -53,12 +53,7 @@ class Server:
         prev_page = page - 1
         if prev_page == 0:
             prev_page = None
-        count_page = 1
-        start_indexing = (count_page - 1) * page_size
-        while (start_indexing < len(all_data)):
-            start_indexing, end = index_range(count_page, page_size)
-            count_page += 1
-        total_pages = count_page - 2
+        total_pages = math.floor(len(all_data) / page_size)
 
         return {
             'page_size': page_size,
